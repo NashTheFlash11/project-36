@@ -51,10 +51,6 @@ function draw() {
   drawSprites();
   //add styles here
 
-  fill("white");
-  textSize(10);
-  text("NOTE: Press The Buttons To Feed Drago Milk!", 200, 20);
-
   fill(255, 255, 254);
   textSize(15);
   if(lastFed>=12){
