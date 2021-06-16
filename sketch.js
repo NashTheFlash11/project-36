@@ -36,9 +36,9 @@ function setup() {
   feed.position(700, 95);
   feed.mousePressed(feedDog);
 
-  addFood = createButton("Add Food");
-  addFood.position(800, 95);
-  addFood.mousePressed(addFood);
+  addFoods = createButton("Add Food");
+  addFoods.position(800, 95);
+  addFoods.mousePressed(addFood);
 }
 
 
@@ -67,19 +67,19 @@ function readStock(data){
   foodObject.updateFoodStock(foodS);
 }
 
+function addFood(){
+  foodS++;
+  database.ref('/').update({
+    Food : foodS,
+  });
+}
+
 function feedDog(){
   dog.addImage(happyDogImage);
   foodObject.updateFoodStock(foodObject.getFoodStock() - 1);
   database.ref('/').update({
     Food : foodObject.getFoodStock(),
     FeedTime : hour(),
-  });
-}
-
-function addFood(){
-  foodS++;
-  database.ref('/').update({
-    Food : foodS,
   });
 }
 
@@ -96,8 +96,8 @@ function writeStock(x){
   }
 
   database.ref('/').update({
-    Food: x
-  })
+    Food: x,
+  });
 }
 
 
