@@ -45,11 +45,6 @@ function setup() {
 function draw() {  
   background(46, 139, 87);
 
-  if(keyWentDown(UP_ARROW)){
-    writeStock(foodS);
-    dog.addImage(happyDogImage);
-  }
-
   currentTime = hour();
   foodObject.display();
   
@@ -58,8 +53,19 @@ function draw() {
 
   fill("white");
   textSize(10);
-  text("NOTE: Press UP_ARROW To Feed Drago Milk!", 200, 20);
+  text("NOTE: Press The Buttons To Feed Drago Milk!", 200, 20);
 
+  fill(255, 255, 254);
+  textSize(15);
+  if(lastFed>=12){
+    text("Last Feed: "+ lastFed%12 + "PM", 360, 30);
+  }
+  else if(lastFed === 0){
+    text("Last Feed : 12 AM", 350, 30);
+  }
+  else{
+    text("Last Feed: " + lastFed + "AM", 350, 30);
+  }
 }
 
 function readStock(data){
